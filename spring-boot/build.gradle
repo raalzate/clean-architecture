@@ -1,46 +1,44 @@
+
 buildscript {
     ext {
-        springBootVersion = '2.0.0.M3'
+        springBootPlugin = 'org.springframework.boot:spring-boot-gradle-plugin'
+        springBootVersion = '2.0.2.RELEASE'
+        thinPlugin = 'org.springframework.boot.experimental:spring-boot-thin-gradle-plugin'
+        thinVersion = '1.0.11.RELEASE'
     }
     repositories {
         mavenCentral()
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("${springBootPlugin}:${springBootVersion}")
+        classpath("${thinPlugin}:${thinVersion}")
     }
 }
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-
-group 'techandsolve.com'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-configurations { providedCompile }
+repositories {
+    mavenCentral()
+}
 
 dependencies {
-
+    compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-web') {
         exclude module: "spring-boot-starter-tomcat"
     }
-    compile 'org.springframework.boot:spring-boot-starter-webflux'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compile 'org.springframework.boot:spring-boot-actuator'
-
-    compile 'com.h2database:h2:1.4.197'
-
-
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
-    testCompile 'org.springframework.boot:spring-boot-test-autoconfigure'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
+/*
 
+springBoot {
+    mainClassName = 'com.techandsolve.springboot.BootRunSpringBoot'
+}
 
-
+bootJar {
+    mainClassName = 'com.techandsolve.springboot.BootRunSpringBoot'
+}
+ */
