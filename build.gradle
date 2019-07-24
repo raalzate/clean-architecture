@@ -11,20 +11,11 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-}
 
 subprojects {
     repositories {
+        mavenLocal()
         mavenCentral()
-        jcenter()
-    }
-
-    dependencies {
-        testCompile "org.junit.jupiter:junit-jupiter-api"
-        testCompile "org.mockito:mockito-junit-jupiter:2.22.0"
-        
     }
 }
 

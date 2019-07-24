@@ -19,7 +19,7 @@ public class BootRunSpringBoot {
     @RestController
     public static class ApiController {
         @GetMapping("/")
-        public String getData(){
+        public String say(){
             return "Hola Mundo";
         }
     }

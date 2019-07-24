@@ -1,16 +1,23 @@
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath "io.quarkus:quarkus-gradle-plugin:0.19.1"
+    }
+}
+
 plugins {
     id 'java'
 }
 
-group 'techandsolve.com'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'io.quarkus'
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation enforcedPlatform("io.quarkus:quarkus-bom:0.19.1")
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-resteasy-jsonb'
+    
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
 }

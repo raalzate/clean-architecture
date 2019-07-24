@@ -20,25 +20,12 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-repositories {
-    mavenCentral()
-}
+
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
-    compile('org.springframework.boot:spring-boot-starter-web') {
-        exclude module: "spring-boot-starter-tomcat"
-    }
+    compile 'org.springframework.boot:spring-boot-starter-web'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-/*
-
-springBoot {
-    mainClassName = 'com.techandsolve.springboot.BootRunSpringBoot'
-}
-
-bootJar {
-    mainClassName = 'com.techandsolve.springboot.BootRunSpringBoot'
-}
- */
+ 
