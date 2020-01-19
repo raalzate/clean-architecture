@@ -2,15 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'techandsolve.com'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.apache.pdfbox:pdfbox:2.0.16'
+    compileOnly 'org.apache.pdfbox:preflight:2.0.16'
 }

@@ -1,7 +1,7 @@
 rootProject.name = 'clean-architecture'
 include 'domain'
 include 'usecase'
-include 'infrastructure'
+include 'service'
 include 'spring-boot'
 include 'micronaut'
 include 'quarkus'

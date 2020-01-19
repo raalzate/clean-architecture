@@ -3,11 +3,17 @@ package com.techandsolve.springboot;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.reactive.config.EnableWebFlux;
 
 
 @SpringBootApplication
+@EnableWebFlux
+@ComponentScan("com.techandsolve")
+@EnableJpaRepositories("com.techandsolve.springboot.repository")
+@EntityScan("com.techandsolve.domain")
 public class BootRunSpringBoot {
 
     public static void main(String[] args) {
@@ -16,12 +22,5 @@ public class BootRunSpringBoot {
         app.run(args);
     }
 
-    @RestController
-    public static class ApiController {
-        @GetMapping("/")
-        public String say(){
-            return "Hola Mundo";
-        }
-    }
 
 }

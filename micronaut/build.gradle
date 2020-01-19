@@ -10,6 +10,7 @@ plugins {
 
 repositories {
     maven { url "https://jcenter.bintray.com" }
+    maven { url 'https://repo.spring.io/libs-snapshot' }
 }
 
 dependencyManagement {
@@ -32,7 +33,12 @@ dependencies {
     compile "io.micronaut:micronaut-runtime"
     compile "io.micronaut:micronaut-http-client"
     compile "io.micronaut:micronaut-http-server-netty"
+    compile "io.micronaut.configuration:micronaut-hibernate-jpa"
+    compile "io.micronaut.configuration:micronaut-jdbc-hikari"
+    compile "io.micronaut.configuration:micronaut-hibernate-validator"
+    compile 'io.projectreactor:reactive-streams-commons:0.6.0.BUILD-SNAPSHOT'
 
+    runtime "com.h2database:h2"
     runtime "ch.qos.logback:logback-classic:1.2.3"
 
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
@@ -49,7 +55,7 @@ mainClassName = "com.techandsolve.micronaut.BootRunMicronaut"
 test {
     useJUnitPlatform()
 }
-tasks.withType(JavaCompile){
+tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
     options.compilerArgs.add('-parameters')
 }

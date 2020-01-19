@@ -2,14 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'techandsolve.com'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
+    compile 'javax.persistence:javax.persistence-api:2.2'
 }

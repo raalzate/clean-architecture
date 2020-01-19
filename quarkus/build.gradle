@@ -7,8 +7,13 @@ buildscript {
     }
 }
 
+
 plugins {
     id 'java'
+}
+
+repositories {
+    maven { url 'https://repo.spring.io/libs-snapshot' }
 }
 
 apply plugin: 'io.quarkus'
@@ -16,8 +21,17 @@ apply plugin: 'io.quarkus'
 dependencies {
     implementation enforcedPlatform("io.quarkus:quarkus-bom:0.19.1")
     implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-hibernate-orm'
+    implementation 'io.quarkus:quarkus-jdbc-h2'
+    implementation 'io.quarkus:quarkus-hibernate-validator'
     implementation 'io.quarkus:quarkus-resteasy-jsonb'
-    
+
+    compile 'io.projectreactor:reactive-streams-commons:0.6.0.BUILD-SNAPSHOT'
+
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
+
+    compileOnly 'org.jboss.resteasy:resteasy-multipart-provider:3.1.4.Final'
+    compile 'org.glassfish.jersey.media:jersey-media-multipart:2.27'
+
 }

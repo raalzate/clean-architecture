@@ -1,0 +1,15 @@
+FROM gradle:jdk8 AS BUILD_IMAGE
+
+COPY --chown=gradle:gradle . /home/app
+WORKDIR /home/app
+RUN gradle build
+
+FROM fabric8/java-alpine-openjdk8-jre
+WORKDIR /opt/microservicio
+COPY --from=BUILD_IMAGE /home/app/service/build/libs/spring-boot*.jar app.jar
+EXPOSE 8080
+
+RUN mkdir -p /opt/microservicio/external
+VOLUME /opt/microservicio/external
+
+CMD ["java","-jar","app.jar"]

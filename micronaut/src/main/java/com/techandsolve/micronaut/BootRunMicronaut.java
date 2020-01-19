@@ -1,6 +1,7 @@
 package com.techandsolve.micronaut;
 
 
+import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.runtime.Micronaut;
@@ -10,13 +11,12 @@ public class BootRunMicronaut {
         Micronaut.run(BootRunMicronaut.class);
     }
 
-    @Controller("/")
-    public static class ApiController {
+    @Controller("/hello")
+    public static class TestController {
 
-        @Get
-        public String say() {
-            return "Hola mundo!";
+        @Get(value = "/", produces = MediaType.TEXT_PLAIN)
+        String getTest() {
+            return "some string";
         }
     }
-
 }

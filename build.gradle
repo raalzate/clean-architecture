@@ -22,25 +22,15 @@ subprojects {
 
 project(':spring-boot') {
     dependencies {
-        compile project(':domain')
-        compile project(':infrastructure')
-        compile project(':usecase')    
-    }
-}
-
-project(':micronaut') {
-    dependencies {
-        compile project(':domain')
-        compile project(':infrastructure')
-        compile project(':usecase')   
-    }
-}
-
-project(':quarkus') {
-    dependencies {
-        compile project(':domain')
-        compile project(':infrastructure')
-        compile project(':usecase')   
+        compile project(':service') {
+            dependencies{
+                compile project(':usecase') {
+                    dependencies {
+                        compile project(':domain')
+                    }
+                }
+            }
+        }
     }
 }
 
